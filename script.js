@@ -89,7 +89,7 @@ function createInputLine() {
 
       const echoed = document.createElement("p");
       // echoed.innerHTML = ``;
-       echoed.innerHTML = `<span class="prompt"><span class="user">visitor</span>@<span class="host">terminal.satnaing.dev</span>:~$</span> ${cmd}`;
+       echoed.innerHTML = `<span class="prompt"><span class="user">visitor</span>@<span class="host">terminal.Aryan.dev</span>:~$</span> ${cmd}`;
       output.appendChild(echoed);
 
       inputLine.remove();
