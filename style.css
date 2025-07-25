@@ -1,0 +1,71 @@
+body {
+  font-family: 'MatrixFont';
+  margin: 0;
+  background-color: #282c34;
+  font-family: 'Courier New', Courier, monospace;
+  color: #00ff41;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.terminal-wrapper {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  width: 90%;
+  max-width: 800px;
+  overflow: hidden;
+}
+
+.window-bar {
+  background-color: #2b2b2b;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.window-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.window-buttons span {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.red { background-color: #ff5f56; }
+.yellow { background-color: #ffbd2e; }
+.green { background-color: #27c93f; }
+
+.terminal {
+  padding: 0 20px;
+  height: 500px;
+  overflow-y:auto;
+  white-space: pre-wrap;
+  background: black;
+  color: #00ff41;
+  font-family:'monospace';
+  letter-spacing: 1px;
+}
+input {
+  background: transparent;
+  border: none;
+  color: #00ff41;
+  font-family: inherit;
+  font-size: inherit;
+  width: 100%;
+  outline: none;
+  caret-color: #00ff41;
+}
+
+@font-face {
+  font-family: 'MatrixFont';
+  src: url('./assets/fonts/matrix.ttf') format('truetype');
+}
