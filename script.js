@@ -16,17 +16,19 @@ const commands = {
     "Creative and curious Frontend Developer who sees code as a canvas to solve problems and build meaningful digital experiences. Passionate about learning, experimenting, and turning bold ideas into polished, user-friendly interfaces."
   ],
   education: [
-   ""
+   "MCA, Vivekanand Education Society's Institute of Technology ,Mumbai   2024-present",
+   "BscIT, Vidyalankar School of Information and Technology ,Mumbai  2021-2024"
+
   ],
   projects: [
-    "1. Portfolio Website - HTML/CSS/JS",
-    "2. React Todo App",
-    "3. Weather App - OpenWeather API"
+    "1. Water Supply System- ReactJs and Firebase",
+    "2. Obys Agency UI CLone ",
+    
   ],
   contact: [
-    "Email: dummy@example.com",
-    "GitHub: github.com/dummyname",
-    "LinkedIn: linkedin.com/in/dummyname"
+    "Email: aryan.yadav.03ay@gmail.com",
+    "GitHub: https://github.com/Aaryany25",
+    "LinkedIn: https://www.linkedin.com/in/aryan-yadav25/"
   ],
 
 };
@@ -69,7 +71,7 @@ function createInputLine() {
 
   const prompt = document.createElement("span");
   prompt.classList.add("prompt");
-  // prompt.innerHTML = ">>";
+  prompt.innerHTML = ">>";
 
   const input = document.createElement("input");
   input.setAttribute("type", "text");
@@ -86,7 +88,8 @@ function createInputLine() {
       input.disabled = true;
 
       const echoed = document.createElement("p");
-      echoed.innerHTML = ` ${cmd}`;
+      // echoed.innerHTML = ``;
+       echoed.innerHTML = `<span class="prompt"><span class="user">visitor</span>@<span class="host">terminal.satnaing.dev</span>:~$</span> ${cmd}`;
       output.appendChild(echoed);
 
       inputLine.remove();
