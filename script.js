@@ -44,7 +44,7 @@ const fightCLub = [
   "Second Rule of F***T C**B is DO NOT WRITE  wrong command",
   "type back to return ",
 ];
-function typeLine(text, delay = 35) {
+function typeLine(text, delay = 25) {
   return new Promise((resolve) => {
     const line = document.createElement("p");
     output.appendChild(line);
@@ -116,7 +116,7 @@ function createInputLine() {
           output.innerHTML = "";
           inMatrix = true;
           await typeLine("Welcome to the Matrix.");
-          await typeLine("Type 'cmds' to dive deep ...");
+          await typeLine("Type 'cmd' to dive deep ...");
           createInputLine();
         } else if (
           cmds === "bluepill" ||
