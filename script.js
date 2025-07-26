@@ -4,36 +4,38 @@ const output = document.getElementById("output");
 let inMatrix = false;
 
 const commands = {
-  cmd : [
+  cmd: [
     "about       - about me",
     "education   - my education background",
     "projects    - view my work",
     "contact     - contact information",
     "clear       - clear the terminal",
-    
   ],
   about: [
-    "Creative and curious Frontend Developer who sees code as a canvas to solve problems and build meaningful digital experiences. Passionate about learning, experimenting, and turning bold ideas into polished, user-friendly interfaces."
+    "Creative and curious Frontend Developer who sees code as a canvas to solve problems and build meaningful digital experiences. Passionate about learning, experimenting, and turning bold ideas into polished, user-friendly interfaces.",
   ],
   education: [
-   "MCA, Vivekanand Education Society's Institute of Technology ,Mumbai   2024-present",
-   "BscIT, Vidyalankar School of Information and Technology ,Mumbai  2021-2024"
-
+    "MCA, Vivekanand Education Society's Institute of Technology ,Mumbai   2024-present",
+    "BscIT, Vidyalankar School of Information and Technology ,Mumbai  2021-2024",
   ],
   projects: [
     "1. Water Supply System- ReactJs and Firebase",
     "2. Obys Agency UI CLone ",
-    
   ],
   contact: [
     "Email: aryan.yadav.03ay@gmail.com",
     "GitHub: https://github.com/Aaryany25",
-    "LinkedIn: https://www.linkedin.com/in/aryan-yadav25/"
+    "LinkedIn: https://www.linkedin.com/in/aryan-yadav25/",
   ],
-
 };
-
-function typeLine(text, delay = 55) {
+const fightCLub = [
+  "Welcome to F***T C**B ",
+  "                   ~Tyler Durden",
+  "First Rule of F***T C**B is Do not Write wrong command",
+  "Second Rule of F***T C**B is DO NOT WRITE  wrong command",
+  "type back to return ",
+];
+function typeLine(text, delay = 15) {
   return new Promise((resolve) => {
     const line = document.createElement("p");
     output.appendChild(line);
@@ -56,8 +58,7 @@ async function introSequence() {
     "You take the blue pill – the story ends, you view my resume.",
     " or",
     "You take the red pill – you stay in Wonderland and See how deep the rabbit hole goes.",
-    "Choose : "
-
+    "Choose Carefully  : ",
   ];
   for (const line of lines) {
     await typeLine(line);
@@ -84,29 +85,31 @@ function createInputLine() {
 
   input.addEventListener("keydown", async function (e) {
     if (e.key === "Enter") {
-      const cmd = input.value.trim().toLowerCase();
+      const cmds = input.value.trim().toLowerCase();
       input.disabled = true;
-
-      // const echoed = document.createElement("p");
-      // // echoed.innerHTML = ``;
-      //  echoed.innerHTML = `<span class="prompt"><span class="user">visitor</span>@<span class="host">terminal.Aryan.dev</span>:~$</span> ${cmd}`;
-      // output.appendChild(echoed);
 
       inputLine.remove();
 
       // Handle pre-Matrix stage
       if (!inMatrix) {
-        if (cmd === "redpill") {
-          output.innerHTML = '';
+        if (cmds === "redpill" || cmds === "red pill" || cmds === "Red Pill") {
+          output.innerHTML = "";
           inMatrix = true;
           await typeLine("Welcome to the Matrix.");
-          await typeLine("Type 'cmd' to dive deep ...");
+          await typeLine("Type 'cmds' to dive deep ...");
           createInputLine();
-        } else if (cmd === "bluepill") {
-          await typeLine("Opening resume...");
-         output.innerHTML = '';
+        } else if (
+          cmds === "bluepill" ||
+          cmds === "blue pill" ||
+          cmds === "Blue Pill"
+        ) {
+          await typeLine("Taking you back to Matrix...");
+          output.innerHTML = "";
           await new Promise((resolve) => setTimeout(resolve, 1000));
-          window.open("https://drive.google.com/file/d/1jcII0m1j5YYXIrksrCQfZXDtOKa9sZId/view?usp=drive_link", "_blank");
+          window.open(
+            "https://drive.google.com/file/d/1jcII0m1j5YYXIrksrCQfZXDtOKa9sZId/view?usp=drive_link",
+            "_blank"
+          );
         } else {
           await typeLine("Choose wisely: redpill or bluepill");
           createInputLine();
@@ -115,30 +118,40 @@ function createInputLine() {
       }
 
       // Handle terminal commands after redpill
-      if (cmd === "clear") {
+      if (cmds === "clear") {
         output.innerHTML = "";
         createInputLine();
         return;
       }
 
-      if (cmd.endsWith("\\")) {
+      if (cmds.endsWith("\\")) {
         await typeLine("Usage: help");
         createInputLine();
         return;
       }
-
-      if (commands[cmd]) {
+if(cmds === "Back" || cmds=="back"){
+  output.innerHTML = "";
+   const echoed = document.createElement("p");
+        echoed.innerHTML = `<span class="prompt"><span class="user">visitor</span>@<span class="host">terminal.Aryan.dev</span>:~$</span> ${cmds}`;
+        output.appendChild(echoed);
+   for (const line of commands["cmd"]) {
+          await typeLine(line);
+        }
+    createInputLine()
+    return 
+}
+      if (commands[cmds]) {
         output.innerHTML = "";
-           const echoed = document.createElement("p");
-      // echoed.innerHTML = ``;
-       echoed.innerHTML = `<span class="prompt"><span class="user">visitor</span>@<span class="host">terminal.Aryan.dev</span>:~$</span> ${cmd}`;
-      output.appendChild(echoed);
-        for (const line of commands[cmd]) {
+        const echoed = document.createElement("p");
+        echoed.innerHTML = `<span class="prompt"><span class="user">visitor</span>@<span class="host">terminal.Aryan.dev</span>:~$</span> ${cmds}`;
+        output.appendChild(echoed);
+
+        for (const line of commands[cmds]) {
           await typeLine(line);
         }
       } else {
-        await typeLine(`Command not found: ${cmd}`);
-         for (const line of commands[cmd]) {
+        output.innerHTML = "";
+        for (const line of fightCLub) {
           await typeLine(line);
         }
       }
