@@ -4,13 +4,13 @@ const output = document.getElementById("output");
 let inMatrix = false;
 
 const commands = {
-  help : [
+  cmd : [
     "about       - about me",
     "education   - my education background",
     "projects    - view my work",
     "contact     - contact information",
     "clear       - clear the terminal",
-    "help        - Show All Commmand "
+    
   ],
   about: [
     "Creative and curious Frontend Developer who sees code as a canvas to solve problems and build meaningful digital experiences. Passionate about learning, experimenting, and turning bold ideas into polished, user-friendly interfaces."
@@ -33,7 +33,7 @@ const commands = {
 
 };
 
-function typeLine(text, delay = 80) {
+function typeLine(text, delay = 55) {
   return new Promise((resolve) => {
     const line = document.createElement("p");
     output.appendChild(line);
@@ -87,10 +87,10 @@ function createInputLine() {
       const cmd = input.value.trim().toLowerCase();
       input.disabled = true;
 
-      const echoed = document.createElement("p");
-      // echoed.innerHTML = ``;
-       echoed.innerHTML = `<span class="prompt"><span class="user">visitor</span>@<span class="host">terminal.Aryan.dev</span>:~$</span> ${cmd}`;
-      output.appendChild(echoed);
+      // const echoed = document.createElement("p");
+      // // echoed.innerHTML = ``;
+      //  echoed.innerHTML = `<span class="prompt"><span class="user">visitor</span>@<span class="host">terminal.Aryan.dev</span>:~$</span> ${cmd}`;
+      // output.appendChild(echoed);
 
       inputLine.remove();
 
@@ -100,7 +100,7 @@ function createInputLine() {
           output.innerHTML = '';
           inMatrix = true;
           await typeLine("Welcome to the Matrix.");
-          await typeLine("Type 'help' to begin.");
+          await typeLine("Type 'cmd' to dive deep ...");
           createInputLine();
         } else if (cmd === "bluepill") {
           await typeLine("Opening resume...");
@@ -128,11 +128,19 @@ function createInputLine() {
       }
 
       if (commands[cmd]) {
+        output.innerHTML = "";
+           const echoed = document.createElement("p");
+      // echoed.innerHTML = ``;
+       echoed.innerHTML = `<span class="prompt"><span class="user">visitor</span>@<span class="host">terminal.Aryan.dev</span>:~$</span> ${cmd}`;
+      output.appendChild(echoed);
         for (const line of commands[cmd]) {
           await typeLine(line);
         }
       } else {
         await typeLine(`Command not found: ${cmd}`);
+         for (const line of commands[cmd]) {
+          await typeLine(line);
+        }
       }
 
       createInputLine();
