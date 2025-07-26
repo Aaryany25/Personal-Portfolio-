@@ -10,22 +10,31 @@ const commands = {
     "projects    - view my work",
     "contact     - contact information",
     "clear       - clear the terminal",
+    "back        - return to the menu "
   ],
   about: [
     "Creative and curious Frontend Developer who sees code as a canvas to solve problems and build meaningful digital experiences. Passionate about learning, experimenting, and turning bold ideas into polished, user-friendly interfaces.",
+    "type back to return ",
   ],
   education: [
     "MCA, Vivekanand Education Society's Institute of Technology ,Mumbai   2024-present",
     "BscIT, Vidyalankar School of Information and Technology ,Mumbai  2021-2024",
+    "type back to return ",
   ],
   projects: [
-    "1. Water Supply System- ReactJs and Firebase",
+    "1. Water Supply System",
+    "              A web app built using ReactJS and Firebase that simulates  water distribution tracking system",
     "2. Obys Agency UI CLone ",
+    "                    A pixel-perfect UI clone of the Obys agency site built with modern frontend tools.",
+    "type 1 For Water Supply System Github",
+    "type 2 for Obys Agency Github",
+    "type back to return ",
   ],
   contact: [
-    "Email: aryan.yadav.03ay@gmail.com",
-    "GitHub: https://github.com/Aaryany25",
-    "LinkedIn: https://www.linkedin.com/in/aryan-yadav25/",
+    "Email",
+    "GitHub",
+    "LinkedIn",
+    "Type Command Git , Email or LinkedIn to Reach Out"
   ],
 };
 const fightCLub = [
@@ -35,16 +44,27 @@ const fightCLub = [
   "Second Rule of F***T C**B is DO NOT WRITE  wrong command",
   "type back to return ",
 ];
-function typeLine(text, delay = 15) {
+function typeLine(text, delay = 35) {
   return new Promise((resolve) => {
     const line = document.createElement("p");
     output.appendChild(line);
+    
+    const audio = document.getElementById("typingSound");
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play().catch(() => {}); // catch autoplay errors
+    }
+
     let i = 0;
     const interval = setInterval(() => {
       line.textContent += text[i];
       i++;
       if (i === text.length) {
         clearInterval(interval);
+        if (audio) {
+          audio.pause();
+          audio.currentTime = 0;
+        }
         resolve();
       }
     }, delay);
@@ -130,6 +150,9 @@ function createInputLine() {
         return;
       }
 if(cmds === "Back" || cmds=="back"){
+  if(!inMatrix){
+    introSequence()
+  }
   output.innerHTML = "";
    const echoed = document.createElement("p");
         echoed.innerHTML = `<span class="prompt"><span class="user">visitor</span>@<span class="host">terminal.Aryan.dev</span>:~$</span> ${cmds}`;
@@ -140,6 +163,37 @@ if(cmds === "Back" || cmds=="back"){
     createInputLine()
     return 
 }
+if (cmds === "github") {
+  await typeLine("ReDirecting to GitHub...");
+  window.open("https://github.com/Aaryany25", "_blank");
+  createInputLine();
+  return;
+} 
+if (cmds === "linkedin") {
+  await typeLine("ReDirecting to LinkedIN...");
+  window.open("https://www.linkedin.com/in/aryan-yadav25/", "_blank");
+  createInputLine();
+  return;
+}
+if (cmds === "Email") {
+  await typeLine("Opening Gmail...");
+  window.open("https://mail.google.com/mail/?view=cm&fs=1&to=aryan.yadav.03ay@gmail.com", "_blank");
+  createInputLine();
+  return;
+}
+if(cmds ==="1"){
+   await typeLine("ReDirecting to the Project");
+  window.open("https://github.com/Aaryany25/WMS", "_blank");
+  createInputLine();
+  return;
+}
+if(cmds ==="2"){
+   await typeLine("ReDirecting to the Project");
+  window.open("https://github.com/Aaryany25/obys-agency", "_blank");
+  createInputLine();
+  return;
+}
+ 
       if (commands[cmds]) {
         output.innerHTML = "";
         const echoed = document.createElement("p");

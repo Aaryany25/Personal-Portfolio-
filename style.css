@@ -63,6 +63,7 @@ input {
   width: 100%;
   outline: none;
   caret-color: #00ff41;
+  display: inline;
 }
 
 @font-face {
